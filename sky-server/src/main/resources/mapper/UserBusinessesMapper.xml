@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhang.mapper.UserBusinessesMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhang.entity.UserBusinesses">
+            <id property="user_id" column="user_id" jdbcType="INTEGER"/>
+            <result property="businesses_id" column="businesses_id" jdbcType="INTEGER"/>
+            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_id,businesses_id,create_time
+    </sql>
+</mapper>

@@ -1,0 +1,33 @@
+server:
+    port: 8080
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.26.128:3307/demo?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+        password: 123456
+        username: root
+        type: com.mysql.cj.jdbc.MysqlDataSource
+    redis:
+        port: 6666
+        host: 192.168.26.128
+        password: 123456
+        database: 0
+        lettuce:
+            pool:
+                shutdown-timeout: 100
+                max-active: 20
+                #最大阻塞等待时间（负数没有限制）
+                max-wait: -1
+                #连接池中的最大空闲连接
+                max-idle: 5
+                #连接池中的最小空闲连接
+                min-idle: 0
+            timeout: 5000
+
+
+
+
+mybatis-plus:
+    mapper-locations: com.zhang.mapper.*.xml
+    configuration:
+        log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
