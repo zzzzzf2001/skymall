@@ -1,6 +1,7 @@
 package com.zhang.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zhang.entity.Category;
 import com.zhang.service.CategoryService;
 import com.zhang.mapper.CategoryMapper;
 import org.springframework.stereotype.Service;

@@ -1,20 +1,24 @@
 package com.zhang.service.impl;
 
+
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.mysql.cj.util.TimeUtil;
 import com.zhang.entity.DTO.RegistrationDTO;
 import com.zhang.entity.User;
 import com.zhang.exception.CaptchaErrorException;
-import com.zhang.exception.PhoneHasError;
 import com.zhang.result.Result;
 import com.zhang.service.UserService;
 import com.zhang.mapper.UserMapper;
-import com.zhang.utils.LoginUtils;
+
+import com.zhang.utils.RedisUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.TransactionManager;
-import org.springframework.transaction.TransactionStatus;
+
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
+
+
 import java.util.Objects;
 
 import static com.zhang.constant.HttpStatusConstant.CODE_411;
@@ -34,32 +38,50 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Resource
     private UserMapper userMapper;
 
+
+    private final String REGISTER="registerUser:";
     @Resource
     private TransactionTemplate transactionTemplate;
 
-
+    @Resource
+    private RedisUtils redisUtils;
 
     @Override
     public Result usersignIn( RegistrationDTO registrationDTO) {
 
-        transactionTemplate.execute(status -> {
-            String captcha = registrationDTO.getCaptcha();
-            if (!LoginUtils.verifyCaptcha(captcha)) {
-               throw new CaptchaErrorException(CODE_411,"验证码错误");
-            }
-            String phone = registrationDTO.getPhone();
-            if (!Objects.isNull( userMapper.hasPhoneInDB(phone))){
-                throw new PhoneHasError(CODE_411,"手机号已存在，请检查手机号或更换手机号");
-            }
-
-
-            return true;
-        });
+        return null;
 
     }
 
 
+    @Override
+    @Transactional
+    public Result getReregisterCaptcha(String phone) {
 
+       String code=String.valueOf ((int) (Math.random() * 1000 * 1000));
+
+        redisUtils.set(REGISTER+phone,code);
+        redisUtils.expire(REGISTER+phone,120);
+        return Result.success("发送成功");
+    }
+
+    @Override
+    public Result verifyReregisterCaptcha(String code,String phone) {
+//        这里不能把过期和是否有key包含在一起，若没有key就会报空指针
+        String key = REGISTER + phone;
+        if (!redisUtils.hasKey(key)) {
+            throw new CaptchaErrorException(CODE_411,"验证码错误或已过期");
+        }
+        String getCode = (String) redisUtils.get(key);
+
+        if (!code.equals(getCode)){
+            throw new CaptchaErrorException(CODE_411,"验证码错误或已过期");
+        }
+        //销毁key value
+        redisUtils.del(key);
+
+        return Result.success("验证成功");
+    }
 
 
 }

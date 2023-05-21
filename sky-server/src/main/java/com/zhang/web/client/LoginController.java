@@ -3,10 +3,9 @@ package com.zhang.web.client;
 import com.zhang.entity.DTO.RegistrationDTO;
 import com.zhang.result.Result;
 import com.zhang.service.UserService;
+import com.zhang.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -23,20 +22,22 @@ public class LoginController {
     @Resource
     private UserService userService;
 
+
 /**
- * @param registrationDTO 用户注册DTO
+ * @param phone 用户手机号
  * @author : 15754
  * @return Result
  * */
 
 
+    @PostMapping("/getCaptcha")
+    public Result getRegisterCaptcha (@RequestParam("phone") String phone){
+        return userService.getReregisterCaptcha(phone);
+    }
 
-    public Result userRegistration (@RequestBody RegistrationDTO registrationDTO){
-
-        userService.usersignIn(registrationDTO);
-
-
-        return Result.success();
+    @PostMapping("/verifyCaptcha")
+    public Result verifyRegisterCaptcha(@RequestParam("code") String code,@RequestParam("phone") String phone){
+        return userService.verifyReregisterCaptcha(code,phone);
     }
 
 

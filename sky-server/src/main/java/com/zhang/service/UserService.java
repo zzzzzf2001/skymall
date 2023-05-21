@@ -13,4 +13,8 @@ import com.zhang.result.Result;
 public interface UserService extends IService<User> {
 
     Result usersignIn( RegistrationDTO registrationDTO);
+
+    Result getReregisterCaptcha(String phone);
+
+    Result verifyReregisterCaptcha(String code,String phone);
 }
