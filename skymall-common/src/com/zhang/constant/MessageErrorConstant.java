@@ -10,6 +10,7 @@ package com.zhang.constant;
 public class MessageErrorConstant {
     public static final String PASSWORD_ERROR = "密码错误";
     public static final String ACCOUNT_NOT_FOUND = "账号不存在";
+    public static final String PHONE_NOT_FOUND = "手机号不存在";
     public static final String ACCOUNT_NOT_ENABLE = "账号不可用";
     public static final String UNKNOWN_ERROR = "未知错误";
     public static final String USER_NOT_LOGIN = "用户未登录";

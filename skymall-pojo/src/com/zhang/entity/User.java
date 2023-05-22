@@ -4,14 +4,14 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * 用户表
@@ -62,7 +62,7 @@ public class User implements Serializable {
     /**
      * 生日
      */
-    private Date birthday;
+    private LocalDateTime birthday;
 
     /**
      * 头像
@@ -72,7 +72,7 @@ public class User implements Serializable {
     /**
      * 用户状态
      */
-    private String status;
+    private Integer status;
 
     /**
      * 手机号
@@ -87,12 +87,12 @@ public class User implements Serializable {
     /**
      * 上次登录时间
      */
-    private Date list_login_time;
+    private LocalDateTime last_login_time;
 
     /**
      * 创建时间
      */
-    private Date create_time;
+    private LocalDateTime create_time;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
@@ -121,7 +121,7 @@ public class User implements Serializable {
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
             && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
-            && (this.getList_login_time() == null ? other.getList_login_time() == null : this.getList_login_time().equals(other.getList_login_time()))
+            && (this.getLast_login_time() == null ? other.getLast_login_time() == null : this.getLast_login_time().equals(other.getLast_login_time()))
             && (this.getCreate_time() == null ? other.getCreate_time() == null : this.getCreate_time().equals(other.getCreate_time()));
     }
 
@@ -141,7 +141,7 @@ public class User implements Serializable {
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getPhone() == null) ? 0 : getPhone().hashCode());
         result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
-        result = prime * result + ((getList_login_time() == null) ? 0 : getList_login_time().hashCode());
+        result = prime * result + ((getLast_login_time() == null) ? 0 : getLast_login_time().hashCode());
         result = prime * result + ((getCreate_time() == null) ? 0 : getCreate_time().hashCode());
         return result;
     }
@@ -164,7 +164,7 @@ public class User implements Serializable {
         sb.append(", status=").append(status);
         sb.append(", phone=").append(phone);
         sb.append(", email=").append(email);
-        sb.append(", list_login_time=").append(list_login_time);
+        sb.append(", list_login_time=").append(last_login_time);
         sb.append(", create_time=").append(create_time);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

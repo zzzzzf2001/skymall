@@ -1,16 +1,49 @@
 package com.zhang.utils;
 
+import com.zhang.entity.DTO.LoginDTO;
+import com.zhang.entity.User;
+import com.zhang.exception.PasswordErrorException;
+import com.zhang.mapper.UserMapper;
+import org.springframework.stereotype.Component;
+import org.springframework.util.DigestUtils;
+
+import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Objects;
+
+import static com.zhang.constant.HttpStatusConstant.CODE_411;
+import static com.zhang.constant.JwtClaimsConstant.*;
+
 /**
  * @author : 15754
  * @version 1.0.0
  * @since : 2023/5/21 21:06
  **/
 
+@Component
 
 public class LoginUtils {
 
-    public  static  boolean verifyCaptcha(String captcha){
-        return true;
-    }
+    @Resource
+    private  UserMapper userMapper;
+    public  HashMap<String,String> VerifyLoginInfo(LoginDTO loginDTO) {
+          String  password = DigestUtils.md5DigestAsHex(loginDTO.getPassword().getBytes());
+          loginDTO.setPassword(password);
+          User user = userMapper.verify(loginDTO);
+        if (Objects.isNull(user)) {
+            throw new PasswordErrorException(CODE_411,"密码不正确,请检查后重新登录");
+        }
 
+        HashMap<String,String> map=new HashMap<>();
+
+        map.put(PRIMARY_ID, String.valueOf(user.getId()));
+        map.put(USERNAME,user.getUsername());
+        String token = JWTUtils.getToken(map);
+
+        HashMap<String,String> result =new HashMap<>();
+        result.put(TOKEN,token);
+        result.put("msg","登录成功");
+
+        return result;
+    }
 }

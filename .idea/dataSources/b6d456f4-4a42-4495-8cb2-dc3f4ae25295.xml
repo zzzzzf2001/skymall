@@ -1421,7 +1421,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="355" parent="294" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>2</AutoIncrement>
       <Comment>用户id</Comment>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
@@ -1435,7 +1435,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </column>
     <column id="357" parent="294" name="password">
       <Comment>密码</Comment>
-      <DasType>varchar(25)|0s</DasType>
+      <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
     <column id="358" parent="294" name="gender">
@@ -1470,7 +1470,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </column>
     <column id="364" parent="294" name="status">
       <Comment>用户状态</Comment>
-      <DasType>varchar(1)|0s</DasType>
+      <DasType>int|0s</DasType>
       <Position>10</Position>
     </column>
     <column id="365" parent="294" name="phone">
@@ -1483,7 +1483,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DasType>varchar(255)|0s</DasType>
       <Position>12</Position>
     </column>
-    <column id="367" parent="294" name="list_login_time">
+    <column id="367" parent="294" name="last_login_time">
       <Comment>上次登录时间</Comment>
       <DasType>datetime|0s</DasType>
       <Position>13</Position>

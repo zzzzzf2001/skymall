@@ -1,9 +1,12 @@
 package com.zhang.service;
 
+import com.zhang.entity.DTO.LoginDTO;
 import com.zhang.entity.DTO.RegistrationDTO;
 import com.zhang.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zhang.result.Result;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
 * @author 15754
@@ -17,4 +20,8 @@ public interface UserService extends IService<User> {
     Result getReregisterCaptcha(String phone);
 
     Result verifyReregisterCaptcha(String code,String phone);
+
+    Result Login(LoginDTO loginDTO);
+
+    void settingPassWord(String password, HttpServletRequest request);
 }

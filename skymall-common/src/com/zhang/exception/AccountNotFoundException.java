@@ -8,7 +8,7 @@ package com.zhang.exception;
 
 
 public class AccountNotFoundException extends NormalException{
-    public AccountNotFoundException(){}
+    public AccountNotFoundException(String accountNotFound){}
 
     public AccountNotFoundException(String code,String msg){
         super(Integer.valueOf(code),msg);

@@ -17,7 +17,7 @@
             <result property="status" column="status" jdbcType="VARCHAR"/>
             <result property="phone" column="phone" jdbcType="VARCHAR"/>
             <result property="email" column="email" jdbcType="VARCHAR"/>
-            <result property="list_login_time" column="list_login_time" jdbcType="TIMESTAMP"/>
+            <result property="list_login_time" column="last_login_time" jdbcType="TIMESTAMP"/>
             <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
@@ -28,7 +28,22 @@
         status,phone,email,
         list_login_time,create_time
     </sql>
-    <select id="hasPhoneInDB" resultType="java.lang.Integer">
-        select id from user where phone=#{phone}
+    <select id="verify" resultType="com.zhang.entity.User">
+        select * from user
+        <where>
+            <if test="username!=null and username!=''">
+                username=#{username}
+            </if>
+            <if test="phone!=null and phone!=''">
+                phone=#{phone}
+            </if>
+            and
+            <if test="password!=null and password!=''">
+                password=#{password}
+            </if>
+        </where>
+
     </select>
+
+
 </mapper>
