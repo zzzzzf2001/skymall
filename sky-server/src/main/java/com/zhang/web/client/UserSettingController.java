@@ -30,13 +30,12 @@ public class UserSettingController {
     private UserService userService;
 
 
-
     @PutMapping("/settingPassword")
     @ApiOperation("用户设置密码")
     @Transactional
-    public Result SettingPassWord(@RequestBody LoginDTO loginDTO, HttpServletRequest request){
-        userService.settingPassWord( loginDTO.getPassword(),  request);
-       return Result.success("密码设置成功");
+    public Result SettingPassWord(@RequestBody LoginDTO loginDTO, HttpServletRequest request) {
+        userService.settingPassWord(loginDTO.getPassword(), request);
+        return Result.success("密码设置成功");
 
     }
 

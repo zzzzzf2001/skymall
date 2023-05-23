@@ -1,24 +1,24 @@
-package com.zhang.exception;
+package com.zhang.handler;
 
+import com.zhang.exception.NormalException;
 import com.zhang.result.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-/**
- * @author : hasd
- * @version 1.0.0
- * @since : 2023/4/22 09:32
- **/
 
-@ControllerAdvice
+/*
+ * @Description
+ * @author 15754
+ * @Date 2023/5/23
+ */
+
+@RestControllerAdvice
 @Slf4j
 public class NormalExceptionAdvice {
-    @ResponseBody
     @ExceptionHandler(NormalException.class)
     public Result handleBusinessException(NormalException e) {
-        log.error("错误:" + e.getDebugInfo());
+        log.error("异常信息：{}", e.getMessage());
         return Result.error(e.getMessage());
     }
 }

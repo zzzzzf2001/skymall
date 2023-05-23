@@ -1,16 +1,16 @@
 package com.zhang.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 
 /**
  * 商品表
@@ -23,60 +23,55 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Goods implements Serializable {
     /**
-     * 商品id
+     * 种类id
      */
-    @TableId(type = IdType.AUTO)
+    @TableId
     private Integer id;
 
     /**
-     * 商品名称
+     * 种类名称
      */
     private String name;
 
     /**
-     * 商家id
+     * 父节点id
      */
-    private Integer businesses_id;
+    private Integer parentid;
 
     /**
-     * 种类id
+     * 展示值
      */
-    private Integer category_id;
+    private String ishow;
 
     /**
-     * 上架时间
+     * 创建时间
      */
-    private Date listing_time;
+    private LocalDateTime create_time;
 
     /**
-     * 价格
+     * 默认排序
      */
-    private String price;
+    private Integer sort;
 
     /**
-     * 商品状态
+     * 创建时间
      */
-    private Integer status;
+    private LocalDateTime createTime;
 
     /**
-     * 商品备注
+     * 修改时间
      */
-    private String remark;
+    private LocalDateTime updateTime;
 
     /**
-     * 发货地
+     * 创建人
      */
-    private String shippingOrigin;
+    private Integer createUser;
 
     /**
-     * 商品编号
+     * 修改人
      */
-    private String number;
-
-    /**
-     * 头像
-     */
-    private String avatar;
+    private Integer updateUser;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
@@ -92,18 +87,17 @@ public class Goods implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Goods other = (Goods) that;
+        Category other = (Category) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getBusinesses_id() == null ? other.getBusinesses_id() == null : this.getBusinesses_id().equals(other.getBusinesses_id()))
-            && (this.getCategory_id() == null ? other.getCategory_id() == null : this.getCategory_id().equals(other.getCategory_id()))
-            && (this.getListing_time() == null ? other.getListing_time() == null : this.getListing_time().equals(other.getListing_time()))
-            && (this.getPrice() == null ? other.getPrice() == null : this.getPrice().equals(other.getPrice()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
-            && (this.getShippingOrigin() == null ? other.getShippingOrigin() == null : this.getShippingOrigin().equals(other.getShippingOrigin()))
-            && (this.getNumber() == null ? other.getNumber() == null : this.getNumber().equals(other.getNumber()))
-            && (this.getAvatar() == null ? other.getAvatar() == null : this.getAvatar().equals(other.getAvatar()));
+                && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+                && (this.getParentid() == null ? other.getParentid() == null : this.getParentid().equals(other.getParentid()))
+                && (this.getIshow() == null ? other.getIshow() == null : this.getIshow().equals(other.getIshow()))
+                && (this.getCreate_time() == null ? other.getCreate_time() == null : this.getCreate_time().equals(other.getCreate_time()))
+                && (this.getSort() == null ? other.getSort() == null : this.getSort().equals(other.getSort()))
+                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+                && (this.getCreateUser() == null ? other.getCreateUser() == null : this.getCreateUser().equals(other.getCreateUser()))
+                && (this.getUpdateUser() == null ? other.getUpdateUser() == null : this.getUpdateUser().equals(other.getUpdateUser()));
     }
 
     @Override
@@ -112,15 +106,14 @@ public class Goods implements Serializable {
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getBusinesses_id() == null) ? 0 : getBusinesses_id().hashCode());
-        result = prime * result + ((getCategory_id() == null) ? 0 : getCategory_id().hashCode());
-        result = prime * result + ((getListing_time() == null) ? 0 : getListing_time().hashCode());
-        result = prime * result + ((getPrice() == null) ? 0 : getPrice().hashCode());
-        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
-        result = prime * result + ((getShippingOrigin() == null) ? 0 : getShippingOrigin().hashCode());
-        result = prime * result + ((getNumber() == null) ? 0 : getNumber().hashCode());
-        result = prime * result + ((getAvatar() == null) ? 0 : getAvatar().hashCode());
+        result = prime * result + ((getParentid() == null) ? 0 : getParentid().hashCode());
+        result = prime * result + ((getIshow() == null) ? 0 : getIshow().hashCode());
+        result = prime * result + ((getCreate_time() == null) ? 0 : getCreate_time().hashCode());
+        result = prime * result + ((getSort() == null) ? 0 : getSort().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
+        result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
+        result = prime * result + ((getCreateUser() == null) ? 0 : getCreateUser().hashCode());
+        result = prime * result + ((getUpdateUser() == null) ? 0 : getUpdateUser().hashCode());
         return result;
     }
 
@@ -132,15 +125,14 @@ public class Goods implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
-        sb.append(", businesses_id=").append(businesses_id);
-        sb.append(", category_id=").append(category_id);
-        sb.append(", listing_time=").append(listing_time);
-        sb.append(", price=").append(price);
-        sb.append(", status=").append(status);
-        sb.append(", remark=").append(remark);
-        sb.append(", shippingOrigin=").append(shippingOrigin);
-        sb.append(", number=").append(number);
-        sb.append(", avatar=").append(avatar);
+        sb.append(", parentid=").append(parentid);
+        sb.append(", ishow=").append(ishow);
+        sb.append(", create_time=").append(create_time);
+        sb.append(", sort=").append(sort);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", createUser=").append(createUser);
+        sb.append(", updateUser=").append(updateUser);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

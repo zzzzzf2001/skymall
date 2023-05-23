@@ -1,5 +1,6 @@
 package com.zhang.utils;
 
+import com.zhang.context.BaseContext;
 import com.zhang.entity.User;
 import com.zhang.exception.PasswordErrorException;
 import com.zhang.mapper.UserMapper;
@@ -31,6 +32,7 @@ public class LoginUtils {
             throw new PasswordErrorException(CODE_411,"密码不正确,请检查后重新登录");
         }
 
+        BaseContext.setCurrentId(u2.getId());
 
         HashMap<String,String> map=new HashMap<>();
 

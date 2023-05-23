@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zhang.service.impl.CategoryMapper">
+<mapper namespace="com.zhang.mapper.CategoryMapper">
 
     <resultMap id="BaseResultMap" type="com.zhang.entity.Category">
             <id property="id" column="id" jdbcType="INTEGER"/>

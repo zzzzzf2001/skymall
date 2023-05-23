@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author : 15754
  * @version 1.0.0
- * @since : 2023/5/19 19:10
  * @@description 客户端对商品进行操作
+ * @since : 2023/5/19 19:10
  **/
 
 
@@ -21,13 +21,9 @@ public class GoodsController {
 
 
     @GetMapping("/listTree")
-    public Result listWithTree(){
+    public Result listWithTree() {
 
 
-
-
-
-
-       return null;
+        return null;
     }
 }

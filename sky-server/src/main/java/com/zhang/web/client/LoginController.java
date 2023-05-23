@@ -22,34 +22,32 @@ public class LoginController {
     private UserService userService;
 
 
-/**
- * @param phone 用户手机号
- * @author : 15754
- * @return Result
- * */
+    /**
+     * @param phone 用户手机号
+     * @return Result
+     * @author : 15754
+     */
 
 
     @PostMapping("/getCaptcha")
     @ApiOperation("发送验证码实现登录或注册")
-    public Result getRegisterCaptcha (@RequestParam("phone") String phone){
+    public Result getRegisterCaptcha(@RequestParam("phone") String phone) {
         return userService.getReregisterCaptcha(phone);
     }
 
     @PostMapping("/verifyCaptcha")
     @ApiOperation("验证验证码，实现注册或手机号登录")
-    public Result verifyRegisterCaptcha(@RequestParam("code") String code,@RequestParam("phone") String phone){
-        return userService.verifyReregisterCaptcha(code,phone);
+    public Result verifyRegisterCaptcha(@RequestParam("code") String code, @RequestParam("phone") String phone) {
+        return userService.verifyReregisterCaptcha(code, phone);
     }
 
 
     @PutMapping("/signIn")
     @ApiOperation("使用账号或手机号和密码进行登录")
-    public Result signIn(@RequestBody LoginDTO loginDTO){
+    public Result signIn(@RequestBody LoginDTO loginDTO) {
 
-       return userService.Login(loginDTO);
+        return userService.Login(loginDTO);
     }
-
-
 
 
 }
