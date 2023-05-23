@@ -1,7 +1,9 @@
 package com.zhang.entity.DTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author : 15754
@@ -13,6 +15,8 @@ import lombok.Data;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LoginDTO {
     private String password;
     private String username;

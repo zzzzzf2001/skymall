@@ -1,6 +1,5 @@
 package com.zhang.utils;
 
-import com.zhang.entity.DTO.LoginDTO;
 import com.zhang.entity.User;
 import com.zhang.exception.PasswordErrorException;
 import com.zhang.mapper.UserMapper;
@@ -9,7 +8,6 @@ import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
-import java.util.Objects;
 
 import static com.zhang.constant.HttpStatusConstant.CODE_411;
 import static com.zhang.constant.JwtClaimsConstant.*;
@@ -26,18 +24,18 @@ public class LoginUtils {
 
     @Resource
     private  UserMapper userMapper;
-    public  HashMap<String,String> VerifyLoginInfo(LoginDTO loginDTO) {
-          String  password = DigestUtils.md5DigestAsHex(loginDTO.getPassword().getBytes());
-          loginDTO.setPassword(password);
-          User user = userMapper.verify(loginDTO);
-        if (Objects.isNull(user)) {
+    public  HashMap<String,String> VerifyLoginInfo(User userDb,User u2) {
+          String  password = DigestUtils.md5DigestAsHex(u2.getPassword().getBytes());
+          u2.setPassword(password);
+        if (!userDb.getPassword().equals(u2.getPassword())) {
             throw new PasswordErrorException(CODE_411,"密码不正确,请检查后重新登录");
         }
 
+
         HashMap<String,String> map=new HashMap<>();
 
-        map.put(PRIMARY_ID, String.valueOf(user.getId()));
-        map.put(USERNAME,user.getUsername());
+        map.put(PRIMARY_ID, String.valueOf(u2.getId()));
+        map.put(USERNAME,u2.getUsername());
         String token = JWTUtils.getToken(map);
 
         HashMap<String,String> result =new HashMap<>();

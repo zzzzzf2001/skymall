@@ -13,7 +13,9 @@ import com.zhang.service.UserService;
 import com.zhang.utils.JWTUtils;
 import com.zhang.utils.LoginUtils;
 import com.zhang.utils.RedisUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -28,7 +30,6 @@ import java.util.Random;
 
 import static com.zhang.constant.JwtClaimsConstant.*;
 import static com.zhang.constant.MessageErrorConstant.ACCOUNT_NOT_FOUND;
-import static com.zhang.constant.MessageErrorConstant.PHONE_NOT_FOUND;
 import static com.zhang.constant.RedisConstant.REGISTER_PREFIX;
 import static com.zhang.constant.StatusConstant.ENABLE;
 
@@ -42,6 +43,7 @@ import static com.zhang.constant.StatusConstant.ENABLE;
 
 
 @Service
+@Slf4j
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService{
 
     @Resource
@@ -152,28 +154,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public Result Login(LoginDTO loginDTO) {
-        String username = loginDTO.getUsername();
+        User user = new User();
 
-        if (StringUtils.isNotBlank(username)) {
-            LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq((User::getUsername), username);
-            User user = userMapper.selectOne(queryWrapper);
+        BeanUtils.copyProperties(loginDTO,user);
+        String username = user.getUsername();
+        String phone = user.getPhone();
 
-            if (Objects.isNull(user)) {
+        if (StringUtils.isNotBlank(username)||StringUtils.isNotBlank(phone)) {
+            LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper();
+            queryWrapper.eq(StringUtils.isNotBlank(username),User::getUsername,username)
+                    .or()
+                    .eq(StringUtils.isNotBlank(phone),User::getPhone,phone)
+            ;
+            User userDB = userMapper.selectOne(queryWrapper);
+
+            if (Objects.isNull(userDB)) {
                 throw new AccountNotFoundException(ACCOUNT_NOT_FOUND);
             }
-            return Result.success(loginUtils.VerifyLoginInfo(loginDTO));
-        }
-
-        String phone = loginDTO.getPhone();
-         if (StringUtils.isNotBlank(phone)) {
-            LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq((User::getPhone), phone);
-            User user = userMapper.selectOne(queryWrapper);
-            if (Objects.isNull(user)) {
-                throw new AccountNotFoundException(PHONE_NOT_FOUND);
-            }
-            return Result.success(loginUtils.VerifyLoginInfo(loginDTO));
+            return Result.success(loginUtils.VerifyLoginInfo(userDB,user));
         }
 
           return  Result.success();

@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Mapper;
 * @createDate 2023-05-19 16:00:55
 * @Entity com.zhang.entity.Authority
 */
+@Mapper
+
 public interface AuthorityMapper extends BaseMapper<Authority> {
 
 }

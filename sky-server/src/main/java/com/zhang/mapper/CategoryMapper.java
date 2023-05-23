@@ -2,6 +2,7 @@ package com.zhang.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zhang.entity.Category;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author 15754
@@ -9,6 +10,8 @@ import com.zhang.entity.Category;
 * @createDate 2023-05-19 16:00:55
 * @Entity com.zhang.entity.Category
 */
+@Mapper
+
 public interface CategoryMapper extends BaseMapper<Category> {
 
 }

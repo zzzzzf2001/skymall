@@ -5,18 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a49072da-734b-4f20-8335-164e2a30206c" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/sky-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/AuthorityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/AuthorityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/BusinessesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/BusinessesMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/CartMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/CartMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/CategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/GoodsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/GoodsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/InventoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/InventoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/RoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/UserBusinessesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/UserBusinessesMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/UserCartMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/UserCartMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/utils/LoginUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/utils/LoginUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/web/client/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/web/client/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/web/client/UserSettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/java/com/zhang/web/client/UserSettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sky-server/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sky-server/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sky-server/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skymall-common/src/com/zhang/constant/JwtClaimsConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/skymall-common/src/com/zhang/constant/JwtClaimsConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skymall-common/src/com/zhang/constant/MessageErrorConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/skymall-common/src/com/zhang/constant/MessageErrorConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skymall-common/src/com/zhang/exception/AccountNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/skymall-common/src/com/zhang/exception/AccountNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skymall-pojo/src/com/zhang/entity/DTO/RegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/skymall-pojo/src/com/zhang/entity/DTO/RegistrationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skymall-pojo/src/com/zhang/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/skymall-pojo/src/com/zhang/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skymall-pojo/src/com/zhang/entity/DTO/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/skymall-pojo/src/com/zhang/entity/DTO/LoginDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,12 +174,29 @@
       <workItem from="1684714075884" duration="32000" />
       <workItem from="1684718916526" duration="4642000" />
       <workItem from="1684739359605" duration="4420000" />
-      <workItem from="1684759007938" duration="5973000" />
+      <workItem from="1684759007938" duration="8247000" />
+      <workItem from="1684770141045" duration="5467000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/sky-server/src/main/java/com/zhang/utils/LoginUtils.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/sky-server/src/main/java/com/zhang/service/impl/UserServiceImpl.java</url>
+          <line>185</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

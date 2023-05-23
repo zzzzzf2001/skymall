@@ -1,5 +1,6 @@
 package com.zhang.web.client;
 
+import com.zhang.entity.DTO.LoginDTO;
 import com.zhang.result.Result;
 import com.zhang.service.UserService;
 import io.swagger.annotations.ApiOperation;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  **/
 
 @Slf4j
+@RestController
 @RequestMapping("/user/setting")
 
 public class UserSettingController {
@@ -28,11 +31,11 @@ public class UserSettingController {
 
 
 
-    @PutMapping("settingPassword")
+    @PutMapping("/settingPassword")
     @ApiOperation("用户设置密码")
     @Transactional
-    public Result SettingPassWord(@RequestBody String password, HttpServletRequest request){
-        userService.settingPassWord( password,  request);
+    public Result SettingPassWord(@RequestBody LoginDTO loginDTO, HttpServletRequest request){
+        userService.settingPassWord( loginDTO.getPassword(),  request);
        return Result.success("密码设置成功");
 
     }

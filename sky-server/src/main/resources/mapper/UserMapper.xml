@@ -4,46 +4,5 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhang.mapper.UserMapper">
 
-    <resultMap id="BaseResultMap" type="com.zhang.entity.User">
-            <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="username" column="username" jdbcType="VARCHAR"/>
-            <result property="password" column="password" jdbcType="VARCHAR"/>
-            <result property="gender" column="gender" jdbcType="VARCHAR"/>
-            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
-            <result property="p_signature" column="p_signature" jdbcType="VARCHAR"/>
-            <result property="amount_spent" column="amount_spent" jdbcType="DECIMAL"/>
-            <result property="birthday" column="birthday" jdbcType="TIMESTAMP"/>
-            <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
-            <result property="status" column="status" jdbcType="VARCHAR"/>
-            <result property="phone" column="phone" jdbcType="VARCHAR"/>
-            <result property="email" column="email" jdbcType="VARCHAR"/>
-            <result property="list_login_time" column="last_login_time" jdbcType="TIMESTAMP"/>
-            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
-    </resultMap>
-
-    <sql id="Base_Column_List">
-        id,username,password,
-        gender,nickname,p_signature,
-        amount_spent,birthday,avatar,
-        status,phone,email,
-        list_login_time,create_time
-    </sql>
-    <select id="verify" resultType="com.zhang.entity.User">
-        select * from user
-        <where>
-            <if test="username!=null and username!=''">
-                username=#{username}
-            </if>
-            <if test="phone!=null and phone!=''">
-                phone=#{phone}
-            </if>
-            and
-            <if test="password!=null and password!=''">
-                password=#{password}
-            </if>
-        </where>
-
-    </select>
-
 
 </mapper>

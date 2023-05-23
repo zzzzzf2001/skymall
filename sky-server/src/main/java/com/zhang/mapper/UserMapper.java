@@ -1,8 +1,7 @@
 package com.zhang.mapper;
 
-import com.zhang.entity.DTO.LoginDTO;
-import com.zhang.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zhang.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -17,10 +16,11 @@ public interface UserMapper extends BaseMapper<User> {
     @Select("select id from user where phone=#{phone}")
     int hasPhoneInDB(@Param("phone") String phone);
 
-    User verify(LoginDTO loginDTO);
 
-    @Update("update user set password=#{userId}")
+    @Update("update user set password=#{password} where id=#{userId}")
     void setPassWord(String password, Integer userId);
+
+
 }
 
 
